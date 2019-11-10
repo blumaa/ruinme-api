@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def sign_up
-    user = User.new(params)
+    user = User.new(age: params[:age], email: params[:email], display_name: params[:display_name], zip_code: params[:zip_code], gender: params[:gender], looking_for: params[:looking_for], bio: params[:bio])
     if user.save
       render json: {message: "user signed up!", data: user}
     else
