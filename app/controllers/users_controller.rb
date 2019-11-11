@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     puts user
     if user.save
-      token = encode_token(user.id)
+      token = encode_token({ user_id: user.id})
       render json: {message: "user signed up!", user: UserSerializer.new(user), token: token}
     else
       render json: {message: "oh no! sign up failed", data: {errors: user.errors.full_messages}}

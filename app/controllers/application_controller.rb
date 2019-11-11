@@ -1,26 +1,29 @@
 
 class ApplicationController < ActionController::API
     before_action :authorized
-    
+
     def encode_token(payload)
       # payload => { beef: 'steak' }
       JWT.encode(payload, Rails.application.credentials.secret_key_base)
       # jwt string: "eyJhbGciOiJIUzI1NiJ9.eyJiZWVmIjoic3RlYWsifQ._IBTHTLGX35ZJWTCcY30tLmwU9arwdpNVxtVU0NpAuI"
     end
-   
+
     def auth_header
       # { 'Authorization': 'Bearer <token>' }
       request.headers['Authorization']
     end
-   
+
     def decoded_token
       if auth_header
-        token = auth_header.split(' ')[1]
+        token = auth_header.split('Bearer ')[1]
         puts token
         # headers: { 'Authorization': 'Bearer <token>' }
         begin
-          JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
+          decode = JWT.decode(token, Rails.application.credentials.secret_key_base, true, algorithm: 'HS256')
           # JWT.decode => [{ "beef"=>"steak" }, { "alg"=>"HS256" }]
+          puts decode
+          puts "******************************************************"
+          return decode
         rescue JWT::DecodeError
           nil
         end
@@ -35,7 +38,7 @@ class ApplicationController < ActionController::API
           @user = User.find_by(id: user_id)
         end
       end
-     
+
       def logged_in?
         !!current_user
       end
@@ -45,5 +48,3 @@ class ApplicationController < ActionController::API
       end
 
 end
-  
-  
