@@ -2055,3 +2055,933 @@ Processing by UsersController#index as */*
 Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.5ms | Allocations: 4621)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2637152044451020740)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddPasswordDigestToUser (20191108174153)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (7.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191108174153"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2637152044451020740)[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (67.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ruineme_development"[0m
+  [1m[35m (75.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "ruineme_test"[0m
+  [1m[35m (182.6ms)[0m  [1m[35mCREATE DATABASE "ruineme_development" ENCODING = 'unicode'[0m
+  [1m[35m (115.6ms)[0m  [1m[35mCREATE DATABASE "ruineme_test" ENCODING = 'unicode'[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2637152044451020740)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20191107155725)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (22.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying, "display_name" character varying, "age" integer, "bio" text, "gender" character varying, "looking_for" character varying, "zip_code" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (5.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191107155725"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRelationships (20191107155926)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "relationships" ("id" bigserial primary key, "user_1_id" integer, "user_2_id" integer, "pending" boolean DEFAULT TRUE, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191107155926"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateMessages (20191107163728)
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.1ms)[0m  [1m[35mCREATE TABLE "messages" ("id" bigserial primary key, "sender_id" integer, "receiver_id" integer, "content" text, "relationship_id" bigint, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_messages_on_relationship_id" ON "messages"  ("relationship_id")[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191107163728"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToUser (20191108174153)
+  [1m[35m (8.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" character varying[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191108174153"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-11-08 17:47:10.823795"], ["updated_at", "2019-11-08 17:47:10.823795"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(2637152044451020740)[0m
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/users" for ::1 at 2019-11-08 14:37:10 -0600
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+Completed 500 Internal Server Error in 166ms (ActiveRecord: 0.0ms | Allocations: 36352)
+
+
+  
+NoMethodError (undefined method `authorized' for #<UsersController:0x00007fcd11401ab0>):
+  
+activesupport (6.0.1) lib/active_support/callbacks.rb:429:in `block in make_lambda'
+activesupport (6.0.1) lib/active_support/callbacks.rb:182:in `block (2 levels) in halting_and_conditional'
+actionpack (6.0.1) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.0.1) lib/active_support/callbacks.rb:183:in `block in halting_and_conditional'
+activesupport (6.0.1) lib/active_support/callbacks.rb:514:in `block in invoke_before'
+activesupport (6.0.1) lib/active_support/callbacks.rb:514:in `each'
+activesupport (6.0.1) lib/active_support/callbacks.rb:514:in `invoke_before'
+activesupport (6.0.1) lib/active_support/callbacks.rb:134:in `run_callbacks'
+actionpack (6.0.1) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.0.1) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.0.1) lib/action_controller/metal/instrumentation.rb:33:in `block in process_action'
+activesupport (6.0.1) lib/active_support/notifications.rb:180:in `block in instrument'
+activesupport (6.0.1) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.0.1) lib/active_support/notifications.rb:180:in `instrument'
+actionpack (6.0.1) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (6.0.1) lib/action_controller/metal/params_wrapper.rb:245:in `process_action'
+activerecord (6.0.1) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.1) lib/abstract_controller/base.rb:136:in `process'
+actionpack (6.0.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.1) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.1) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.1) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.1) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.1) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.1) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (6.0.1) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.1) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.1) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.1) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.1) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.0.3) lib/rack/cors.rb:95:in `call'
+railties (6.0.1) lib/rails/engine.rb:526:in `call'
+puma (3.12.1) lib/puma/configuration.rb:227:in `call'
+puma (3.12.1) lib/puma/server.rb:660:in `handle_request'
+puma (3.12.1) lib/puma/server.rb:474:in `process_client'
+puma (3.12.1) lib/puma/server.rb:334:in `block in run'
+puma (3.12.1) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/users" for ::1 at 2019-11-08 15:06:41 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"sdfasdf\",\"age\":\"30\",\"password\":\"12345678\",\"passwordConfirm\":\"12345678\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"I hate it\"}"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1036)
+
+
+  
+NoMethodError (undefined method `permit' for #<String:0x00007fcd10c24a68>):
+  
+app/controllers/users_controller.rb:34:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:08:32 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"sdfasdf\",\"age\":\"30\",\"password\":\"12345678\",\"passwordConfirm\":\"12345678\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"I hate it\"}"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1031)
+
+
+  
+NoMethodError (undefined method `permit' for #<String:0x00007fcd0fd1ea00>):
+  
+app/controllers/users_controller.rb:35:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:09:50 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"sdfasdf\",\"age\":\"30\",\"password\":\"12345678\",\"passwordConfirm\":\"12345678\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"I hate it\"}"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 156)
+
+
+  
+TypeError (no implicit conversion of ActionController::Parameters into String):
+  
+app/controllers/users_controller.rb:34:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:10:45 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"sdfasdf\",\"age\":\"30\",\"password\":\"12345678\",\"passwordConfirm\":\"12345678\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"I hate it\"}"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 994)
+
+
+  
+NoMethodError (undefined method `permit' for #<Hash:0x00007fcd114cce68>):
+  
+app/controllers/users_controller.rb:34:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:12:27 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"sdfasdf\",\"age\":\"30\",\"password\":\"12345678\",\"passwordConfirm\":\"12345678\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"I hate it\"}"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 994)
+
+
+  
+NoMethodError (undefined method `permit' for #<Hash:0x00007fcd113eb800>):
+  
+app/controllers/users_controller.rb:35:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:14:45 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"sdfasdf\",\"age\":\"30\",\"password\":\"12345678\",\"passwordConfirm\":\"12345678\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"I hate it\"}"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1019)
+
+
+  
+NoMethodError (undefined method `permit' for #<String:0x00007fcd104f3de8>):
+  
+app/controllers/users_controller.rb:35:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:21:12 -0600
+Processing by UsersController#create as */*
+  Parameters: {"_json"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"asdfas\",\"age\":\"22\",\"password\":\"1234\",\"passwordConfirm\":\"1234\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"ba;flka\"}", "user"=>{}}
+Completed 400 Bad Request in 1ms (ActiveRecord: 8.2ms | Allocations: 171)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: user):
+  
+app/controllers/users_controller.rb:34:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 15:21:40 -0600
+Processing by UsersController#create as */*
+  Parameters: {"_json"=>"{\"email\":\"asdfa@trash.com\",\"displayName\":\"asdfas\",\"age\":\"22\",\"password\":\"1234\",\"passwordConfirm\":\"1234\",\"lookingFor\":\"1111\",\"zip\":\"60660\",\"bio\":\"ba;flka\"}", "user"=>{}}
+[31mUnpermitted parameters: :_json, :user[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (2.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 1822ms (Views: 0.2ms | ActiveRecord: 21.3ms | Allocations: 779240)
+
+
+Started POST "/users" for ::1 at 2019-11-08 15:23:09 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"me@trash.com", "displayName"=>"ouchie", "age"=>"21", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"thanks I hate it", "user"=>{"email"=>"me@trash.com", "age"=>"21", "bio"=>"thanks I hate it"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "me@trash.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 27ms (Views: 0.2ms | ActiveRecord: 7.5ms | Allocations: 9360)
+
+
+Started POST "/users" for ::1 at 2019-11-08 15:25:24 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;fasd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;fasd"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (3.7ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 4.8ms | Allocations: 3048)
+
+
+Started POST "/users" for ::1 at 2019-11-08 15:25:58 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"a", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"123564", "bio"=>"a;sdlkfjas", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"a;sdlkfjas"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (3.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 4.9ms | Allocations: 3055)
+
+
+Started POST "/users" for ::1 at 2019-11-08 15:27:19 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 10ms (Views: 0.3ms | ActiveRecord: 1.8ms | Allocations: 3055)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:04:08 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 19ms (Views: 0.4ms | ActiveRecord: 2.0ms | Allocations: 9274)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:04:42 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 11.5ms | Allocations: 160)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/users_controller.rb:34:in `user_params'
+app/controllers/users_controller.rb:5:in `create'
+Started POST "/users" for ::1 at 2019-11-08 16:04:59 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (1.5ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 10.4ms | Allocations: 9332)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:05:32 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 26ms (Views: 0.2ms | ActiveRecord: 12.3ms | Allocations: 9318)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:07:50 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:6:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:6:in `create'
+Completed 200 OK in 22ms (Views: 0.2ms | ActiveRecord: 9.2ms | Allocations: 9286)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:10:02 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[36mUser Exists? (1.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:7:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:7:in `create'
+Completed 200 OK in 25ms (Views: 0.2ms | ActiveRecord: 9.8ms | Allocations: 9291)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:10:34 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ouchie@me.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 26ms (Views: 0.3ms | ActiveRecord: 12.1ms | Allocations: 9360)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:11:34 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"ouchie@me.com", "displayName"=>"1234", "age"=>"18", "password"=>"[FILTERED]", "passwordConfirm"=>"[FILTERED]", "lookingFor"=>"1111", "zip"=>"60660", "bio"=>"asd;flasjd", "user"=>{"email"=>"ouchie@me.com", "age"=>"18", "bio"=>"asd;flasjd"}}
+[31mUnpermitted parameters: :passwordConfirm, :zip, :user[0m
+[31mUnpermitted parameters: :passwordConfirm, :zip, :user[0m
+Completed 500 Internal Server Error in 250ms (ActiveRecord: 9.3ms | Allocations: 6563)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'displayName' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-11-08 16:17:14 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"asdlkfa@trash.com", "display_name"=>"", "age"=>"21", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip"=>"60666", "displayName"=>"dafsd", "bio"=>"asdf", "user"=>{"email"=>"asdlkfa@trash.com", "display_name"=>"", "age"=>"21", "bio"=>"asdf", "looking_for"=>"1111"}}
+[31mUnpermitted parameters: :displayName, :user[0m
+[31mUnpermitted parameters: :displayName, :user[0m
+Completed 500 Internal Server Error in 251ms (ActiveRecord: 0.0ms | Allocations: 6593)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'zip' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-11-08 16:18:21 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"aasdf@trash.com", "display_name"=>"asdfa", "age"=>"22", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip"=>"454534", "bio"=>"fasdfa", "user"=>{"email"=>"aasdf@trash.com", "display_name"=>"asdfa", "age"=>"22", "bio"=>"fasdfa", "looking_for"=>"1111"}}
+[31mUnpermitted parameter: :user[0m
+[31mUnpermitted parameter: :user[0m
+Completed 500 Internal Server Error in 258ms (ActiveRecord: 0.0ms | Allocations: 495)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'zip' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-11-08 16:20:03 -0600
+Processing by UsersController#create as */*
+  Parameters: {"email"=>"aasdf@trash.com", "display_name"=>"asdfa", "age"=>"22", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip"=>"454534", "bio"=>"fasdfa", "user"=>{"email"=>"aasdf@trash.com", "display_name"=>"asdfa", "age"=>"22", "bio"=>"fasdfa", "looking_for"=>"1111"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aasdf@trash.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 27ms (Views: 0.3ms | ActiveRecord: 15.6ms | Allocations: 9413)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:21:16 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdlkf@trash.com", "display_name"=>"asdfa", "age"=>"24", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip"=>"555555", "bio"=>"asdfasdf"}}
+Completed 500 Internal Server Error in 272ms (ActiveRecord: 0.0ms | Allocations: 486)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'zip' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-11-08 16:21:40 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdfa@trash.com", "display_name"=>"asdfasdf", "age"=>"21", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip"=>"", "zip_code"=>"5555555", "bio"=>"as;dflkajsd"}}
+[31mUnpermitted parameter: :zip_code[0m
+[31mUnpermitted parameter: :zip_code[0m
+Completed 500 Internal Server Error in 279ms (ActiveRecord: 0.0ms | Allocations: 513)
+
+
+  
+ActiveModel::UnknownAttributeError (unknown attribute 'zip' for User.):
+  
+app/controllers/users_controller.rb:6:in `create'
+Started POST "/users" for ::1 at 2019-11-08 16:22:17 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdfasd@trash.com", "display_name"=>"asdfasdf", "age"=>"21", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip_code"=>"66666", "bio"=>"asdfasd"}}
+[31mUnpermitted parameter: :zip_code[0m
+[31mUnpermitted parameter: :zip_code[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdfasd@trash.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "looking_for", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "asdfasd@trash.com"], ["display_name", "asdfasdf"], ["age", 21], ["bio", "asdfasd"], ["looking_for", "1111"], ["created_at", "2019-11-08 22:22:17.963511"], ["updated_at", "2019-11-08 22:22:17.963511"], ["password_digest", "$2a$12$16m0XunBOJEk3GQWUT9jZe.QkOsiKNstpa4LWxaJbbp8bZLyZkpha"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 287ms (ActiveRecord: 5.1ms | Allocations: 3816)
+
+
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/application_controller.rb:7:in `encode_token'
+app/controllers/users_controller.rb:9:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/users" for ::1 at 2019-11-08 16:25:08 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"aasdfa@trash.co", "display_name"=>"asdfa", "age"=>"28", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip_code"=>"60660", "bio"=>"asdfasdf"}}
+[31mUnpermitted parameter: :zip_code[0m
+[31mUnpermitted parameter: :zip_code[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "aasdfa@trash.co"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "looking_for", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "aasdfa@trash.co"], ["display_name", "asdfa"], ["age", 28], ["bio", "asdfasdf"], ["looking_for", "1111"], ["created_at", "2019-11-08 22:25:08.656562"], ["updated_at", "2019-11-08 22:25:08.656562"], ["password_digest", "$2a$12$3t0SRwM5h6wuuqhl0SgkpeOEUKZKGmm/5Tya8..x42XzHz57ZJRz2"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 314ms (ActiveRecord: 2.9ms | Allocations: 3651)
+
+
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/application_controller.rb:7:in `encode_token'
+app/controllers/users_controller.rb:9:in `create'
+Started GET "/users" for ::1 at 2019-11-08 16:26:28 -0600
+Processing by UsersController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 141)
+
+
+Started POST "/users" for ::1 at 2019-11-08 16:34:44 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdlkfj@trash.com", "display_name"=>"hoe", "age"=>"22", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip_code"=>"60660", "gender"=>"don't worry", "bio"=>"I hate this"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdlkfj@trash.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "asdlkfj@trash.com"], ["display_name", "hoe"], ["age", 22], ["bio", "I hate this"], ["gender", "don't worry"], ["looking_for", "1111"], ["zip_code", "60660"], ["created_at", "2019-11-08 22:34:45.254801"], ["updated_at", "2019-11-08 22:34:45.254801"], ["password_digest", "$2a$12$Vf7XyGyvHhSI29CEhSqIDOsvL07a7ptSP9JRgHRFzLHIy6cQre/m6"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 282ms (ActiveRecord: 21.3ms | Allocations: 10670)
+
+
+  
+TypeError (no implicit conversion of nil into String):
+  
+app/controllers/application_controller.rb:7:in `encode_token'
+app/controllers/users_controller.rb:9:in `create'
+Started POST "/users" for ::1 at 2019-11-08 17:06:35 -0600
+  [1m[35m (13.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"asdlkfj@trashheap.com", "display_name"=>"hoes", "age"=>"22", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip_code"=>"60660", "gender"=>"don't worry", "bio"=>"I hate this"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "asdlkfj@trashheap.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "asdlkfj@trashheap.com"], ["display_name", "hoes"], ["age", 22], ["bio", "I hate this"], ["gender", "don't worry"], ["looking_for", "1111"], ["zip_code", "60660"], ["created_at", "2019-11-08 23:06:35.803956"], ["updated_at", "2019-11-08 23:06:35.803956"], ["password_digest", "$2a$12$/0MoKD9IKvnxzvqPm8HfbOt6FREt8F/mRYIWvBSf/mYSF9ifDoT1q"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 500 Internal Server Error in 289ms (ActiveRecord: 17.5ms | Allocations: 11978)
+
+
+  
+SyntaxError (/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/serializers/user_serializer.rb:3: syntax error, unexpected end-of-input, expecting end):
+  
+app/serializers/user_serializer.rb:3: syntax error, unexpected end-of-input, expecting end
+app/serializers/user_serializer.rb:3: syntax error, unexpected end-of-input, expecting end
+app/controllers/users_controller.rb:10:in `create'
+Started POST "/users" for ::1 at 2019-11-08 17:07:30 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"ahahahaha@trashheap.com", "display_name"=>"hoesss", "age"=>"22", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip_code"=>"60660", "gender"=>"don't worry", "bio"=>"I hate this"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ahahahaha@trashheap.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "ahahahaha@trashheap.com"], ["display_name", "hoesss"], ["age", 22], ["bio", "I hate this"], ["gender", "don't worry"], ["looking_for", "1111"], ["zip_code", "60660"], ["created_at", "2019-11-08 23:07:30.664844"], ["updated_at", "2019-11-08 23:07:30.664844"], ["password_digest", "$2a$12$PUDfYOwiZ.BKFkR.mjKQLerXWUQfFJ1coliCVpPCkkD//UFsNUP/m"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 299ms (Views: 0.7ms | ActiveRecord: 11.9ms | Allocations: 11059)
+
+
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (24.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (2.3ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mMessage Load (7.9ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tyler@strosin.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "tyler@strosin.io"], ["display_name", "Courtney Portnoy"], ["age", 35], ["bio", "I don't understand how people live. It's amazing to me that people wake up every morning and say: 'Yeah, another day, let's do it.' How do people do it? I don't know how"], ["gender", "Summer Solstice"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:47.098701"], ["updated_at", "2019-11-08 23:13:47.098701"], ["password_digest", "$2a$12$t.qakgw1FLKuOapDbk.5VO55BJ9HwIYyYk580a8ewQ2PKJGy/Bbsa"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "guillermo@grimesbotsford.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "guillermo@grimesbotsford.io"], ["display_name", "Emily"], ["age", 2], ["bio", "For a lot of people, life is just one long, hard kick in the urethra"], ["gender", "The Mug"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:47.345854"], ["updated_at", "2019-11-08 23:13:47.345854"], ["password_digest", "$2a$12$FuE0/q/ED1siKpT7hPDyKePn66epVAxIXK0oo1t.Cntc3dmAOVNn2"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "huey@davis.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "huey@davis.org"], ["display_name", "Paparazzi Birds"], ["age", 8], ["bio", "You know what the problem is with everybody? They all just want to hear what they already believe. No one ever wants to hear the truth"], ["gender", "Cascara Look"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:47.590841"], ["updated_at", "2019-11-08 23:13:47.590841"], ["password_digest", "$2a$12$M2PRLQUrG.iZcCEU4oE34.3A0T0AMSITxvkxQl3RXsy1tEPho46pG"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "scot@klocko.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "scot@klocko.co"], ["display_name", "Herb Kazzaz"], ["age", 2], ["bio", "Ow, crap. I hate this. Running is terrible. Everything is the worst"], ["gender", "Evening Level"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:47.843619"], ["updated_at", "2019-11-08 23:13:47.843619"], ["password_digest", "$2a$12$aAxyBni1qbJkScI68xlwbu5nWc8cFUX9otIoN8xBSyn3IMYKBlQ4K"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dalton_rempel@dietrichhartmann.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "dalton_rempel@dietrichhartmann.co"], ["display_name", "Ralph Stilton"], ["age", 39], ["bio", "Dead on the inside, dead on the outside"], ["gender", "Holiday Utopia"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:48.159410"], ["updated_at", "2019-11-08 23:13:48.159410"], ["password_digest", "$2a$12$oynTEigs5IMwJfpXtqjh7.oJ2eCB7cSolIOYZgQ3KHSXY7qNhA0Ky"]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "thanh.schowalter@mcglynnupton.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "thanh.schowalter@mcglynnupton.io"], ["display_name", "Kelsey Jannings"], ["age", 23], ["bio", "Yes, I ate all the muffins, because I have no self-control and I hate myself"], ["gender", "Thanksgiving Cowboy"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:48.449851"], ["updated_at", "2019-11-08 23:13:48.449851"], ["password_digest", "$2a$12$SAFHpTOSQtrooouPV8uC/u3ElPSW32fY9yEQlTgGUWqiDcxIN2mjK"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "franklin@veum.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "franklin@veum.info"], ["display_name", "Woodchuck Coodchuck-Berkowitz"], ["age", 4], ["bio", "Ow, crap. I hate this. Running is terrible. Everything is the worst"], ["gender", "Goodbye Equinox"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:48.700359"], ["updated_at", "2019-11-08 23:13:48.700359"], ["password_digest", "$2a$12$fjed3UF7c3NIyrJ9uQ5bWOIh.MwnSyqFxCajxKcldsPODBstyrcma"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jasper.wilderman@fay.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "jasper.wilderman@fay.name"], ["display_name", "Lenny Turteltaub"], ["age", 41], ["bio", "Yes, I ate all the muffins, because I have no self-control and I hate myself"], ["gender", "Heart Equinox"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:48.969327"], ["updated_at", "2019-11-08 23:13:48.969327"], ["password_digest", "$2a$12$VF3WjjbOicJAtHGJRFGC5OfE/FWf6aNDUulQ2Ak2YOAWDT6iRzzH."]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "king_medhurst@oconnell.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "king_medhurst@oconnell.com"], ["display_name", "Beatrice Horseman"], ["age", 22], ["bio", "Spaghetti or not, here I come"], ["gender", "Postmodern Star"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:49.230746"], ["updated_at", "2019-11-08 23:13:49.230746"], ["password_digest", "$2a$12$QfWjTcoTdYv7t4B3.L8BBuN/lWMDQkwu/oGzjhpO2AXy5tv4Fj4.C"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "alicia.price@murphygulgowski.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "alicia.price@murphygulgowski.info"], ["display_name", "Katrina Peanutbutter"], ["age", 31], ["bio", "For a lot of people, life is just one long, hard kick in the urethra"], ["gender", "Winter Town"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:49.474576"], ["updated_at", "2019-11-08 23:13:49.474576"], ["password_digest", "$2a$12$qHIWb.Iu4ImBza4pytLXHOaEaj4qQPwD5NYvN7rbjLkBEJva2EoF6"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jacquie@ruecker.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "jacquie@ruecker.co"], ["display_name", "Officer Meow Meow Fuzzyface"], ["age", 24], ["bio", "Spaghetti or not, here I come"], ["gender", "Good-morning Choice"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:49.718336"], ["updated_at", "2019-11-08 23:13:49.718336"], ["password_digest", "$2a$12$Ktx/YPGBpwlj28z02lg6Kuz.zbR.8OYi.wTYeDeOkUnkv63HVQJwW"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "gema@grimeslind.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "gema@grimeslind.biz"], ["display_name", "Charlotte Moore"], ["age", 15], ["bio", "You know what the problem is with everybody? They all just want to hear what they already believe. No one ever wants to hear the truth"], ["gender", "Seattle Volcano"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:49.965913"], ["updated_at", "2019-11-08 23:13:49.965913"], ["password_digest", "$2a$12$vW3LcRETR34tSv5jPq59RuXahBJyapfsfVUCTkrtHgrwNaUZZQdRK"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "rayford@quigley.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "rayford@quigley.co"], ["display_name", "Joseph Sugarman"], ["age", 36], ["bio", "You know what the problem is with everybody? They all just want to hear what they already believe. No one ever wants to hear the truth"], ["gender", "Kreb-Full-o "], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:50.212779"], ["updated_at", "2019-11-08 23:13:50.212779"], ["password_digest", "$2a$12$R5Y6E4oi8jOPrTFN3Vg8xuo59h.BaLhVihTzAx40wK0qHD0cOm9my"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "shan_orn@swift.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "shan_orn@swift.com"], ["display_name", "Sextina Aquafina"], ["age", 20], ["bio", "Dead on the inside, dead on the outside"], ["gender", "Green Symphony"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:50.456989"], ["updated_at", "2019-11-08 23:13:50.456989"], ["password_digest", "$2a$12$953ioP9B.ECSpc6qeGDdBuGSYBJD4HDd6GfgkDs0Akf4kn5VgrySe"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "roman.haley@dubuqueboyle.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "roman.haley@dubuqueboyle.biz"], ["display_name", "Mr Peanutbutter"], ["age", 9], ["bio", "Ow, crap. I hate this. Running is terrible. Everything is the worst"], ["gender", "Split Symphony"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:50.709811"], ["updated_at", "2019-11-08 23:13:50.709811"], ["password_digest", "$2a$12$wMGx3AzuECBs5ohmbFJ6vuE5.bYQgiS4BTJxFLXj7E10akhmRTEFi"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ana_huels@champlin.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "ana_huels@champlin.biz"], ["display_name", "Todd Chavez"], ["age", 24], ["bio", "If you care about what other people think, you're never gonna do anything"], ["gender", "KrebStar Nuts"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:50.956075"], ["updated_at", "2019-11-08 23:13:50.956075"], ["password_digest", "$2a$12$KGoVFU6CfZS7SvIBA4rIF.9CFAu/NSqCKpuekMTIFtTBG05PTOFSq"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "leigha@cole.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "leigha@cole.biz"], ["display_name", "Sebastian St Clair"], ["age", 1], ["bio", "That's the problem with life, either you know what you want and you don't get what you want, or you get what you want and then you don't know what you want"], ["gender", "The Look"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:51.201300"], ["updated_at", "2019-11-08 23:13:51.201300"], ["password_digest", "$2a$12$Us77Tr/1FJp8lVdd.CAi1uAdP0W2J7MDF8asYQmFWKWvK/OK6PBTC"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "emanuel.mertz@weinatcole.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "emanuel.mertz@weinatcole.biz"], ["display_name", "Roxy"], ["age", 14], ["bio", "It gets easier. But you have to do it every day, that's the hard part. But it does get easier"], ["gender", "Captain's Utopia"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:51.447108"], ["updated_at", "2019-11-08 23:13:51.447108"], ["password_digest", "$2a$12$7r/d67i/RetuQGEYfxHZNOUzoEhInuLGQNARmOBFmC3VXucHAYxSe"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "debbie.jenkins@shields.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "debbie.jenkins@shields.com"], ["display_name", "Sarah Lynn"], ["age", 10], ["bio", "Yes, I ate all the muffins, because I have no self-control and I hate myself"], ["gender", "Brooklyn Extract"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:51.701619"], ["updated_at", "2019-11-08 23:13:51.701619"], ["password_digest", "$2a$12$DNbVHw2Wt9BRvXr4uCheVetJIqt6DqjtpzluCkiCwJiz9kJaMaem2"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "arden.schuppe@friesen.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "arden.schuppe@friesen.biz"], ["display_name", "Honey Sugarman"], ["age", 3], ["bio", "If you care about what other people think, you're never gonna do anything"], ["gender", "Good-morning Bean"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-08 23:13:51.970164"], ["updated_at", "2019-11-08 23:13:51.970164"], ["password_digest", "$2a$12$JQOVqDMWeSaSrCpx3A91Vu1izDuwgyZv6Q62z6DBUAf2qc68732r6"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (6.9ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 8], ["user_2_id", 7], ["pending", false], ["created_at", "2019-11-08 23:13:51.992383"], ["updated_at", "2019-11-08 23:13:51.992383"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 14], ["user_2_id", 6], ["pending", false], ["created_at", "2019-11-08 23:13:52.013836"], ["updated_at", "2019-11-08 23:13:52.013836"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 10], ["user_2_id", 14], ["pending", false], ["created_at", "2019-11-08 23:13:52.021362"], ["updated_at", "2019-11-08 23:13:52.021362"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 12], ["user_2_id", 17], ["pending", false], ["created_at", "2019-11-08 23:13:52.029216"], ["updated_at", "2019-11-08 23:13:52.029216"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.062458"], ["updated_at", "2019-11-08 23:13:52.062458"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.073052"], ["updated_at", "2019-11-08 23:13:52.073052"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.083097"], ["updated_at", "2019-11-08 23:13:52.083097"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.087443"], ["updated_at", "2019-11-08 23:13:52.087443"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.091681"], ["updated_at", "2019-11-08 23:13:52.091681"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.105113"], ["updated_at", "2019-11-08 23:13:52.105113"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (1.0ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.110593"], ["updated_at", "2019-11-08 23:13:52.110593"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.115880"], ["updated_at", "2019-11-08 23:13:52.115880"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.120642"], ["updated_at", "2019-11-08 23:13:52.120642"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.125877"], ["updated_at", "2019-11-08 23:13:52.125877"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.135828"], ["updated_at", "2019-11-08 23:13:52.135828"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.140598"], ["updated_at", "2019-11-08 23:13:52.140598"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.145768"], ["updated_at", "2019-11-08 23:13:52.145768"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.151069"], ["updated_at", "2019-11-08 23:13:52.151069"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.156650"], ["updated_at", "2019-11-08 23:13:52.156650"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.3ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.166484"], ["updated_at", "2019-11-08 23:13:52.166484"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.171596"], ["updated_at", "2019-11-08 23:13:52.171596"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.177508"], ["updated_at", "2019-11-08 23:13:52.177508"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.182710"], ["updated_at", "2019-11-08 23:13:52.182710"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.187734"], ["updated_at", "2019-11-08 23:13:52.187734"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.200291"], ["updated_at", "2019-11-08 23:13:52.200291"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.206389"], ["updated_at", "2019-11-08 23:13:52.206389"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.212427"], ["updated_at", "2019-11-08 23:13:52.212427"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.217397"], ["updated_at", "2019-11-08 23:13:52.217397"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.222866"], ["updated_at", "2019-11-08 23:13:52.222866"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.233644"], ["updated_at", "2019-11-08 23:13:52.233644"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.239952"], ["updated_at", "2019-11-08 23:13:52.239952"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.246886"], ["updated_at", "2019-11-08 23:13:52.246886"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.251798"], ["updated_at", "2019-11-08 23:13:52.251798"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 14], ["receiver_id", 6], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 2], ["created_at", "2019-11-08 23:13:52.256722"], ["updated_at", "2019-11-08 23:13:52.256722"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.266295"], ["updated_at", "2019-11-08 23:13:52.266295"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.272635"], ["updated_at", "2019-11-08 23:13:52.272635"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.277705"], ["updated_at", "2019-11-08 23:13:52.277705"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.282681"], ["updated_at", "2019-11-08 23:13:52.282681"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 8], ["receiver_id", 7], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 1], ["created_at", "2019-11-08 23:13:52.287418"], ["updated_at", "2019-11-08 23:13:52.287418"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.297291"], ["updated_at", "2019-11-08 23:13:52.297291"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.302089"], ["updated_at", "2019-11-08 23:13:52.302089"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.307083"], ["updated_at", "2019-11-08 23:13:52.307083"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.313375"], ["updated_at", "2019-11-08 23:13:52.313375"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.319767"], ["updated_at", "2019-11-08 23:13:52.319767"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.329319"], ["updated_at", "2019-11-08 23:13:52.329319"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.334668"], ["updated_at", "2019-11-08 23:13:52.334668"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.339596"], ["updated_at", "2019-11-08 23:13:52.339596"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.345671"], ["updated_at", "2019-11-08 23:13:52.345671"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 12], ["receiver_id", 17], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 4], ["created_at", "2019-11-08 23:13:52.351458"], ["updated_at", "2019-11-08 23:13:52.351458"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.362220"], ["updated_at", "2019-11-08 23:13:52.362220"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.367851"], ["updated_at", "2019-11-08 23:13:52.367851"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.373950"], ["updated_at", "2019-11-08 23:13:52.373950"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.378939"], ["updated_at", "2019-11-08 23:13:52.378939"]]
+  [1m[35m (9.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 10], ["receiver_id", 14], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 3], ["created_at", "2019-11-08 23:13:52.416632"], ["updated_at", "2019-11-08 23:13:52.416632"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE DATABASE "ruineme_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE DATABASE "ruineme_test" ENCODING = 'unicode'[0m
+Started GET "/users" for ::1 at 2019-11-11 09:35:20 -0600
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started GET "/users" for ::1 at 2019-11-11 09:50:29 -0600
+Processing by UsersController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 113)
+
+
+Started GET "/users" for ::1 at 2019-11-11 09:51:11 -0600
+Processing by UsersController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 113)
+
+
+Started POST "/users" for ::1 at 2019-11-11 09:54:48 -0600
+Processing by UsersController#create as */*
+  Parameters: {"user"=>{"email"=>"me@bleep.com", "display_name"=>"The Best", "age"=>"19", "password"=>"[FILTERED]", "looking_for"=>"1111", "zip_code"=>"60660", "gender"=>"Some bullshit", "bio"=>"Just lookin for love"}}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Exists? (13.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "me@bleep.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[36mUser Create (45.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "me@bleep.com"], ["display_name", "The Best"], ["age", 19], ["bio", "Just lookin for love"], ["gender", "Some bullshit"], ["looking_for", "1111"], ["zip_code", "60660"], ["created_at", "2019-11-11 15:54:49.282058"], ["updated_at", "2019-11-11 15:54:49.282058"], ["password_digest", "$2a$12$bXJOwaL9Fq66g3PGYkfnYu.fflTXR1eJg2waZRBV3.swbNox0rola"]]
+  ↳ app/controllers/users_controller.rb:8:in `create'
+  [1m[35m (14.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:8:in `create'
+Completed 200 OK in 381ms (Views: 1.2ms | ActiveRecord: 103.3ms | Allocations: 12355)
+
+
+Started GET "/users" for ::1 at 2019-11-11 09:55:08 -0600
+Processing by UsersController#index as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms | Allocations: 113)
+
+
+Started GET "/users" for ::1 at 2019-11-11 09:56:19 -0600
+Processing by UsersController#index as */*
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 903)
+
+
+  
+NoMethodError (undefined method `include?' for 26:Integer):
+  
+app/controllers/application_controller.rb:21:in `decoded_token'
+app/controllers/application_controller.rb:30:in `current_user'
+app/controllers/application_controller.rb:39:in `logged_in?'
+app/controllers/application_controller.rb:43:in `authorized'
+Started POST "/login" for ::1 at 2019-11-11 09:58:59 -0600
+  
+SyntaxError (/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/controllers/auth_controller.rb:22: syntax error, unexpected end, expecting end-of-input):
+  
+app/controllers/auth_controller.rb:22: syntax error, unexpected end, expecting end-of-input
+app/controllers/auth_controller.rb:22: syntax error, unexpected end, expecting end-of-input
+Started POST "/login" for ::1 at 2019-11-11 09:59:46 -0600
+Processing by AuthController#create as */*
+  Parameters: {"user"=>{"email"=>"me@bleep.com", "password"=>"[FILTERED]"}, "auth"=>{"user"=>{"email"=>"me@bleep.com", "password"=>"[FILTERED]"}}}
+[31mUnpermitted parameter: :email[0m
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 14.0ms | Allocations: 2475)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column users.username does not exist
+LINE 1: SELECT "users".* FROM "users" WHERE "users"."username" IS NU...
+                                            ^
+):
+  
+app/controllers/auth_controller.rb:5:in `create'
+Started POST "/login" for ::1 at 2019-11-11 10:00:17 -0600
+Processing by AuthController#create as */*
+  Parameters: {"user"=>{"email"=>"me@bleep.com", "password"=>"[FILTERED]"}, "auth"=>{"user"=>{"email"=>"me@bleep.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "me@bleep.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 202 Accepted in 298ms (Views: 0.4ms | ActiveRecord: 20.5ms | Allocations: 9567)
+
+
+Started GET "/users" for ::1 at 2019-11-11 10:01:36 -0600
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 13ms (Views: 3.9ms | ActiveRecord: 1.5ms | Allocations: 5764)
+
+
+Started GET "/users" for ::1 at 2019-11-11 10:03:31 -0600
+Processing by UsersController#index as */*
+  [1m[36mUser Load (104.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `current_user'
+  [1m[36mUser Load (6.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 127ms (Views: 5.0ms | ActiveRecord: 110.5ms | Allocations: 5604)
+
+
+Started GET "/users" for ::1 at 2019-11-11 10:05:08 -0600
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `current_user'
+  [1m[36mUser Load (121.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 389ms (Views: 11.7ms | ActiveRecord: 336.9ms | Allocations: 14348)
+
+
+Started GET "/users" for ::1 at 2019-11-11 10:07:23 -0600
+Processing by UsersController#index as */*
+  [1m[36mUser Load (379.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:35:in `current_user'
+  [1m[36mUser Load (63.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 454ms (Views: 4.4ms | ActiveRecord: 443.1ms | Allocations: 5815)
+
+

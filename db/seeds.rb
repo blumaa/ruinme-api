@@ -11,7 +11,7 @@ Relationship.destroy_all
 Message.destroy_all
 
 20.times do
-    User.create(email: Faker::Internet.unique.email, display_name: Faker::TvShows::BojackHorseman.unique.character, age: rand(54), bio: Faker::TvShows::BojackHorseman.quote, gender: Faker::Coffee.blend_name, looking_for: "0101", zip_code: "60647" )
+    User.create(email: Faker::Internet.unique.email, password: Faker::Internet.password, display_name: Faker::TvShows::BojackHorseman.unique.character, age: rand(54), bio: Faker::TvShows::BojackHorseman.quote, gender: Faker::Coffee.blend_name, looking_for: "0101", zip_code: "60647" )
 end
 
 4.times do
