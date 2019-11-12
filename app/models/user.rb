@@ -17,7 +17,7 @@ class User < ApplicationRecord
       else
         user = rel.user_1
       end
-      {user: user, relationship_id: rel.id, messages: rel.messages, created_at: rel.created_at}
+      {user: user, relationship_id: rel.id, pending: rel.pending, messages: rel.messages, created_at: rel.created_at}
     }
 
     payload
