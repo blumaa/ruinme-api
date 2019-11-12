@@ -4,10 +4,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :create]
   post '/sign_up', to: 'users#create'
-  get '/users/:id', to: 'users#profile'
+  get '/users/:id', to: 'users#show'
+
   post '/users/:id/relationships', to: 'users#relationships'
 
   post '/login', to: 'auth#create'
+  get '/profile', to: 'auth#show'
 
   get '/relationships/:relationship_id/messages', to: "messages#index"
   post '/relationships/:relationship_id/messages', to: "messages#index"

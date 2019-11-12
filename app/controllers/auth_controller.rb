@@ -13,6 +13,11 @@ class AuthController < ApplicationController
     end
   end
 
+  def show
+    user = current_user
+    render json: {user: user, relationships: user.relationships_with_messages}
+  end
+
   private
 
   def user_login_params

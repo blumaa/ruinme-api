@@ -18,11 +18,12 @@ class UsersController < ApplicationController
     render json: {message: 'all users', data: users}
   end
 
-  def profile
+  def show
     user = User.find_by(id: params[:id])
     render json: {message: "user #{user.id} name #{user.display_name}", data: UserSerializer.new(user)}
   end
 
+ 
   def relationships
     user  = User.find_by(id: params[:id])
     relationships = user.relationships

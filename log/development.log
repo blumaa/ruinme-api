@@ -3955,3 +3955,867 @@ Processing by UsersController#index as */*
 Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 1.9ms | Allocations: 2477)
 
 
+Started GET "/users" for ::1 at 2019-11-11 16:06:38 -0600
+  [1m[35m (5.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 44ms (Views: 4.6ms | ActiveRecord: 18.2ms | Allocations: 13436)
+
+
+Started GET "/users/7" for ::1 at 2019-11-11 16:06:50 -0600
+Processing by UsersController#profile as */*
+  Parameters: {"id"=>"7", "user"=>{}}
+  [1m[36mUser Load (12.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `profile'
+Completed 200 OK in 20ms (Views: 0.7ms | ActiveRecord: 12.5ms | Allocations: 1642)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:06:51 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 13ms (Views: 5.0ms | ActiveRecord: 2.4ms | Allocations: 5853)
+
+
+Started GET "/users/8" for ::1 at 2019-11-11 16:06:52 -0600
+Processing by UsersController#profile as */*
+  Parameters: {"id"=>"8", "user"=>{}}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `profile'
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 3.3ms | Allocations: 1642)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:06:53 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 13ms (Views: 4.7ms | ActiveRecord: 3.4ms | Allocations: 5853)
+
+
+Started GET "/users/13" for ::1 at 2019-11-11 16:06:58 -0600
+Processing by UsersController#profile as */*
+  Parameters: {"id"=>"13", "user"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `profile'
+Completed 200 OK in 8ms (Views: 1.6ms | ActiveRecord: 1.3ms | Allocations: 1625)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:07:00 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 15ms (Views: 2.3ms | ActiveRecord: 7.5ms | Allocations: 5836)
+
+
+Started GET "/users/11" for ::1 at 2019-11-11 16:07:02 -0600
+Processing by UsersController#profile as */*
+  Parameters: {"id"=>"11", "user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `profile'
+Completed 200 OK in 7ms (Views: 0.7ms | ActiveRecord: 1.0ms | Allocations: 1625)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:07:26 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 10ms (Views: 2.3ms | ActiveRecord: 1.3ms | Allocations: 5836)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:09:31 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (37.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 53ms (Views: 6.9ms | ActiveRecord: 39.8ms | Allocations: 5834)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:09:44 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (144.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 159ms (Views: 5.6ms | ActiveRecord: 147.1ms | Allocations: 5834)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:11:25 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (63.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 105ms (Views: 30.2ms | ActiveRecord: 67.1ms | Allocations: 5837)
+
+
+Started GET "/users" for ::1 at 2019-11-11 16:14:13 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 12ms (Views: 3.3ms | ActiveRecord: 2.5ms | Allocations: 5834)
+
+
+Started GET "/profile" for ::1 at 2019-11-11 16:50:11 -0600
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by UsersController#show as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.4ms | ActiveRecord: 0.0ms | Allocations: 180)
+
+
+Started GET "/profile" for ::1 at 2019-11-11 16:51:40 -0600
+Processing by UsersController#show as */*
+Filter chain halted as :authorized rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms | Allocations: 113)
+
+
+Started GET "/profile" for ::1 at 2019-11-11 16:53:08 -0600
+Processing by UsersController#show as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 35.9ms | Allocations: 13515)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/users_controller.rb:23:in `show'
+Started GET "/profile" for ::1 at 2019-11-11 16:54:08 -0600
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/controllers/auth_controller.rb:19: syntax error, unexpected '}', expecting =>
+...er.relationships_with_messages}
+...                              ^
+/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/controllers/auth_controller.rb:29: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/auth_controller.rb:19: syntax error, unexpected '}', expecting =>
+app/controllers/auth_controller.rb:29: syntax error, unexpected end-of-input, expecting end
+app/controllers/auth_controller.rb:19: syntax error, unexpected '}', expecting =>
+app/controllers/auth_controller.rb:29: syntax error, unexpected end-of-input, expecting end
+Started GET "/profile" for ::1 at 2019-11-11 16:54:53 -0600
+Processing by AuthController#show as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 17.3ms | Allocations: 12636)
+
+
+  
+NameError (uninitialized constant User::RelationshipsA):
+  
+app/models/user.rb:10:in `relationships'
+app/models/user.rb:14:in `relationships_with_messages'
+app/controllers/auth_controller.rb:18:in `show'
+Started GET "/profile" for ::1 at 2019-11-11 17:01:03 -0600
+Processing by AuthController#show as */*
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 491)
+
+
+  
+SyntaxError (/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/models/user.rb:20: syntax error, unexpected tLABEL
+...ser, relationship_id: messages: rel.messages, created_at: re...
+...                      ^~~~~~~~~
+/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/models/user.rb:20: syntax error, unexpected tLABEL, expecting '='
+...ages: rel.messages, created_at: rel.created_at}
+...                    ^~~~~~~~~~~
+/Users/shedaddy/Development/code/mod_4/ruinme/ruinme-api/app/models/user.rb:21: syntax error, unexpected '}', expecting end
+    }
+    ^):
+  
+app/models/user.rb:20: syntax error, unexpected tLABEL
+app/models/user.rb:20: syntax error, unexpected tLABEL, expecting '='
+app/models/user.rb:21: syntax error, unexpected '}', expecting end
+app/models/user.rb:20: syntax error, unexpected tLABEL
+app/models/user.rb:20: syntax error, unexpected tLABEL, expecting '='
+app/models/user.rb:21: syntax error, unexpected '}', expecting end
+app/controllers/application_controller.rb:38:in `current_user'
+app/controllers/application_controller.rb:43:in `logged_in?'
+app/controllers/application_controller.rb:47:in `authorized'
+Started GET "/profile" for ::1 at 2019-11-11 17:01:33 -0600
+Processing by AuthController#show as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mRelationship Load (6.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."user_1_id" = $1[0m  [["user_1_id", 26]]
+  ↳ app/models/user.rb:10:in `relationships'
+  [1m[36mCACHE Relationship Load (0.1ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."user_1_id" = $1[0m  [["user_1_id", 26]]
+  ↳ app/models/user.rb:10:in `relationships'
+Completed 200 OK in 103ms (Views: 0.3ms | ActiveRecord: 44.2ms | Allocations: 13894)
+
+
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (3.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 6]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 15]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (1.0ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 21]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 22]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 23]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 24]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 25]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 26]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.7ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Destroy (0.5ms)[0m  [1m[31mDELETE FROM "relationships" WHERE "relationships"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Destroy (0.6ms)[0m  [1m[31mDELETE FROM "relationships" WHERE "relationships"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Destroy (0.4ms)[0m  [1m[31mDELETE FROM "relationships" WHERE "relationships"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Destroy (0.6ms)[0m  [1m[31mDELETE FROM "relationships" WHERE "relationships"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mMessage Load (1.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.6ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (1.2ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 15]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 19]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 20]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 21]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 22]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 23]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 24]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 25]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 26]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 27]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 28]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 29]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 30]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.7ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 31]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 32]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 33]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 34]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 35]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 36]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 37]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 38]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 39]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.9ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 40]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 41]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 42]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 43]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 44]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 45]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 46]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 47]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.5ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 48]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.4ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 49]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Destroy (0.6ms)[0m  [1m[31mDELETE FROM "messages" WHERE "messages"."id" = $1[0m  [["id", 50]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "merna@marquardt.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "merna@marquardt.com"], ["display_name", "Wanda Pierce"], ["age", 51], ["bio", "It gets easier. But you have to do it every day, that's the hard part. But it does get easier"], ["gender", "Blacktop Cup"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:27.231420"], ["updated_at", "2019-11-11 23:03:27.231420"], ["password_digest", "$2a$12$uZvdqHmdaJHezg1f0RX6IeLiBVjm.jYBHS.M1q3QyzNiVaXGcEXGe"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "trinidad@hermanwelch.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "trinidad@hermanwelch.biz"], ["display_name", "Hollyhock"], ["age", 5], ["bio", "If you care about what other people think, you're never gonna do anything"], ["gender", "Thanksgiving Nuts"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:27.480552"], ["updated_at", "2019-11-11 23:03:27.480552"], ["password_digest", "$2a$12$8ZLt/gvIiAWOmda2h6S1W.WlTWMwyUY0lJMr69TQHzzJeJj0ExPRW"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "leland_emard@maggiolakin.info"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "leland_emard@maggiolakin.info"], ["display_name", "Officer Meow Meow Fuzzyface"], ["age", 20], ["bio", "Spaghetti or not, here I come"], ["gender", "Thanksgiving Look"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:27.727049"], ["updated_at", "2019-11-11 23:03:27.727049"], ["password_digest", "$2a$12$y7bkWlu/qfKf/ms84z8.U.0dQ2mICgqHXkTokPEheWF2JOxmM6YlS"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ngan@bailey.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "ngan@bailey.net"], ["display_name", "Pinky Penguin"], ["age", 48], ["bio", "You know what the problem is with everybody? They all just want to hear what they already believe. No one ever wants to hear the truth"], ["gender", "Veranda Coffee"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:27.987224"], ["updated_at", "2019-11-11 23:03:27.987224"], ["password_digest", "$2a$12$KlSJzhFw0KiMP0ZDuGOhY.MD8UudpU/O8g7CQc3l9H0OE9.KQM3/u"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "carla@medhurststamm.net"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "carla@medhurststamm.net"], ["display_name", "Honey Sugarman"], ["age", 27], ["bio", "The universe is a cruel, uncaring void. The key to being happy isn't a search for meaning. It's to just keep yourself busy with unimportant nonsense, and eventually, you'll be dead"], ["gender", "Heart Cowboy"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:28.232939"], ["updated_at", "2019-11-11 23:03:28.232939"], ["password_digest", "$2a$12$GECb2XpOXE1gpeupkjQGXOLKLgM6uk6pIvluGe5rtvaFc766kb94O"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "tracey_lakin@tremblay.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "tracey_lakin@tremblay.org"], ["display_name", "Joseph Sugarman"], ["age", 5], ["bio", "You know what the problem is with everybody? They all just want to hear what they already believe. No one ever wants to hear the truth"], ["gender", "Express Utopia"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:28.479822"], ["updated_at", "2019-11-11 23:03:28.479822"], ["password_digest", "$2a$12$LaQEpTAhS38D2l8rlObKue6hNei.y1tPNPU0Qw/nmh.OgxiLYKI7C"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ivan@skilesmraz.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "ivan@skilesmraz.biz"], ["display_name", "A Ryan Seacrest Type"], ["age", 4], ["bio", "Beer before liquor, never sicker, liquor before beer, never fear, don't do heroin"], ["gender", "The Captain's Choice"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:28.721316"], ["updated_at", "2019-11-11 23:03:28.721316"], ["password_digest", "$2a$12$yZDfHylXFGhP8aVMcS/Miuk90i3ovG0GvBBCK4uv354/1IeRn0YPK"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fatima.wisoky@mcclure.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "fatima.wisoky@mcclure.io"], ["display_name", "Hank Hippopopalous"], ["age", 52], ["bio", "It gets easier. But you have to do it every day, that's the hard part. But it does get easier"], ["gender", "Dark Town"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:28.964841"], ["updated_at", "2019-11-11 23:03:28.964841"], ["password_digest", "$2a$12$XaU0cNq92rF5hS2jNoBmtuxQlVRP0nJjXp1MHtSX.1ajm3U2W4QNC"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "adelaida.heaney@lockman.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "adelaida.heaney@lockman.com"], ["display_name", "Beatrice Horseman"], ["age", 34], ["bio", "I don't understand how people live. It's amazing to me that people wake up every morning and say: 'Yeah, another day, let's do it.' How do people do it? I don't know how"], ["gender", "Spilt Treat"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:29.208852"], ["updated_at", "2019-11-11 23:03:29.208852"], ["password_digest", "$2a$12$s6tHDuVotZZWEGdGvYjwmuOTtpzEYr8L/eDj0g25JzzZP20wnfwqa"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jarred@paucekbauch.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "jarred@paucekbauch.co"], ["display_name", "Paparazzi Birds"], ["age", 24], ["bio", "Spaghetti or not, here I come"], ["gender", "Split Blend"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:29.455794"], ["updated_at", "2019-11-11 23:03:29.455794"], ["password_digest", "$2a$12$ZcKxq9QJuwtIG.T6J65qV.QkD2g01Ytlawa3AQnoYqv655V/1u/2O"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "sidney_baumbach@langworth.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "sidney_baumbach@langworth.biz"], ["display_name", "Vincent Adultman"], ["age", 46], ["bio", "I need to go take a shower so I can't tell if I'm crying or not"], ["gender", "Wake-up "], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:29.701573"], ["updated_at", "2019-11-11 23:03:29.701573"], ["password_digest", "$2a$12$fO1ux06A2Q8WttybG3RVp.OgeRdCxSisU6sNirpNSb.0jnzN/DdIm"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "junko@rolfsonsimonis.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "junko@rolfsonsimonis.com"], ["display_name", "Charlotte Moore"], ["age", 39], ["bio", "Beer before liquor, never sicker, liquor before beer, never fear, don't do heroin"], ["gender", "Holiday Blend"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:29.946829"], ["updated_at", "2019-11-11 23:03:29.946829"], ["password_digest", "$2a$12$QTjA4tJj7.Q7z31OPq4hj.Tc/cSOcWVQL6dKy5eNDW5rzHzUsHNOW"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "billie_batz@welchhettinger.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "billie_batz@welchhettinger.co"], ["display_name", "Princess Carolyn"], ["age", 26], ["bio", "I need to go take a shower so I can't tell if I'm crying or not"], ["gender", "Cascara Utopia"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:30.190335"], ["updated_at", "2019-11-11 23:03:30.190335"], ["password_digest", "$2a$12$h93X2MdsbirhdM9y3wzXYOJLWb1Ef5lMWyPMI/Js6Eh0otF88UKp."]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "peter@hahnlesch.name"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "peter@hahnlesch.name"], ["display_name", "Charley Witherspoon"], ["age", 37], ["bio", "Yes, I ate all the muffins, because I have no self-control and I hate myself"], ["gender", "Thanksgiving Cake"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:30.433248"], ["updated_at", "2019-11-11 23:03:30.433248"], ["password_digest", "$2a$12$uVWowQVZTGP838xi2vGJFOTEPUiO7TRnbBa13wtmb9gVxRXSyJPVO"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "werner_goldner@stracke.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "werner_goldner@stracke.com"], ["display_name", "Todd Chavez"], ["age", 11], ["bio", "Beer before liquor, never sicker, liquor before beer, never fear, don't do heroin"], ["gender", "Veranda America"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:30.681922"], ["updated_at", "2019-11-11 23:03:30.681922"], ["password_digest", "$2a$12$01fMQvfkQ8CewXe6vxq9LOG5YpYOD18rHo9j1kymCJIH2oZ4uL/6W"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "donnie.halvorson@abernathymann.biz"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "donnie.halvorson@abernathymann.biz"], ["display_name", "Katrina Peanutbutter"], ["age", 1], ["bio", "If you care about what other people think, you're never gonna do anything"], ["gender", "The Captain's Look"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:30.926332"], ["updated_at", "2019-11-11 23:03:30.926332"], ["password_digest", "$2a$12$nOfOu..MakAMAg1jPYg/hu3AK1vEhJjV/xe2DVklvGf.NZNutlWqS"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "vincenzo_rempel@nolan.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "vincenzo_rempel@nolan.org"], ["display_name", "Kelsey Jannings"], ["age", 52], ["bio", "I do love you, by the way. I mean as much as I'm capable of loving anyone"], ["gender", "Blacktop Cup"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:31.168814"], ["updated_at", "2019-11-11 23:03:31.168814"], ["password_digest", "$2a$12$GkMIIcARUXJH5qDQuc4ASuf4lGyqCZbWWCtQKK3ToyAjFdHPVqKfu"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "isaiah.halvorson@hermistonhilll.org"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "isaiah.halvorson@hermistonhilll.org"], ["display_name", "Rutabaga Rabbitowitz"], ["age", 40], ["bio", "Yes, I ate all the muffins, because I have no self-control and I hate myself"], ["gender", "Dark Equinox"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:31.415484"], ["updated_at", "2019-11-11 23:03:31.415484"], ["password_digest", "$2a$12$JBahW630fkYlSt/mrS0yPuzzQ1aD0qpa1gXW1zLWGe0lPaEod8wmK"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "kazuko@wuckertveum.io"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "kazuko@wuckertveum.io"], ["display_name", "Emily"], ["age", 32], ["bio", "That's the problem with life, either you know what you want and you don't get what you want, or you get what you want and then you don't know what you want"], ["gender", "Postmodern Town"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:31.659864"], ["updated_at", "2019-11-11 23:03:31.659864"], ["password_digest", "$2a$12$P/Ssgp4s6ydlxz.KtAZiFuwr31Zud0MfnJwbBYB3tPTMiosU2Kiza"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "carlo.hackett@ebert.co"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "display_name", "age", "bio", "gender", "looking_for", "zip_code", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["email", "carlo.hackett@ebert.co"], ["display_name", "Ralph Stilton"], ["age", 0], ["bio", "Beer before liquor, never sicker, liquor before beer, never fear, don't do heroin"], ["gender", "Red Choice"], ["looking_for", "0101"], ["zip_code", "60647"], ["created_at", "2019-11-11 23:03:31.920030"], ["updated_at", "2019-11-11 23:03:31.920030"], ["password_digest", "$2a$12$z/4kslMo.i4ieQTPeLM0EOE7bItIKn.63/AhqNsnILhAdN7i9l23G"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (6.6ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 34], ["user_2_id", 32], ["pending", false], ["created_at", "2019-11-11 23:03:31.931262"], ["updated_at", "2019-11-11 23:03:31.931262"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (1.7ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 37], ["user_2_id", 29], ["pending", false], ["created_at", "2019-11-11 23:03:31.952673"], ["updated_at", "2019-11-11 23:03:31.952673"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.5ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 38], ["user_2_id", 27], ["pending", false], ["created_at", "2019-11-11 23:03:31.966138"], ["updated_at", "2019-11-11 23:03:31.966138"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.5ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 40], ["user_2_id", 43], ["pending", false], ["created_at", "2019-11-11 23:03:31.974309"], ["updated_at", "2019-11-11 23:03:31.974309"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 41], ["user_2_id", 35], ["pending", false], ["created_at", "2019-11-11 23:03:31.982008"], ["updated_at", "2019-11-11 23:03:31.982008"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.6ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 41], ["user_2_id", 38], ["pending", false], ["created_at", "2019-11-11 23:03:31.991837"], ["updated_at", "2019-11-11 23:03:31.991837"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.6ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 38], ["user_2_id", 37], ["pending", false], ["created_at", "2019-11-11 23:03:32.002542"], ["updated_at", "2019-11-11 23:03:32.002542"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 39], ["user_2_id", 32], ["pending", false], ["created_at", "2019-11-11 23:03:32.013991"], ["updated_at", "2019-11-11 23:03:32.013991"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.5ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 42], ["user_2_id", 38], ["pending", false], ["created_at", "2019-11-11 23:03:32.022408"], ["updated_at", "2019-11-11 23:03:32.022408"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("user_1_id", "user_2_id", "pending", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_1_id", 46], ["user_2_id", 43], ["pending", false], ["created_at", "2019-11-11 23:03:32.033045"], ["updated_at", "2019-11-11 23:03:32.033045"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (1.2ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 35], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 9], ["created_at", "2019-11-11 23:03:32.053012"], ["updated_at", "2019-11-11 23:03:32.053012"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 35], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 9], ["created_at", "2019-11-11 23:03:32.059726"], ["updated_at", "2019-11-11 23:03:32.059726"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 35], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 9], ["created_at", "2019-11-11 23:03:32.065398"], ["updated_at", "2019-11-11 23:03:32.065398"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 35], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 9], ["created_at", "2019-11-11 23:03:32.070124"], ["updated_at", "2019-11-11 23:03:32.070124"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 35], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 9], ["created_at", "2019-11-11 23:03:32.074821"], ["updated_at", "2019-11-11 23:03:32.074821"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.084401"], ["updated_at", "2019-11-11 23:03:32.084401"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.089480"], ["updated_at", "2019-11-11 23:03:32.089480"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (1.8ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.094654"], ["updated_at", "2019-11-11 23:03:32.094654"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.101126"], ["updated_at", "2019-11-11 23:03:32.101126"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.106390"], ["updated_at", "2019-11-11 23:03:32.106390"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 41], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 38], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 10], ["created_at", "2019-11-11 23:03:32.119547"], ["updated_at", "2019-11-11 23:03:32.119547"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 38], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 10], ["created_at", "2019-11-11 23:03:32.124308"], ["updated_at", "2019-11-11 23:03:32.124308"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 38], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 10], ["created_at", "2019-11-11 23:03:32.139517"], ["updated_at", "2019-11-11 23:03:32.139517"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 38], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 10], ["created_at", "2019-11-11 23:03:32.144954"], ["updated_at", "2019-11-11 23:03:32.144954"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 41], ["receiver_id", 38], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 10], ["created_at", "2019-11-11 23:03:32.150864"], ["updated_at", "2019-11-11 23:03:32.150864"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.165826"], ["updated_at", "2019-11-11 23:03:32.165826"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.170569"], ["updated_at", "2019-11-11 23:03:32.170569"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.175375"], ["updated_at", "2019-11-11 23:03:32.175375"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.179964"], ["updated_at", "2019-11-11 23:03:32.179964"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.184312"], ["updated_at", "2019-11-11 23:03:32.184312"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 40], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.193478"], ["updated_at", "2019-11-11 23:03:32.193478"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.198266"], ["updated_at", "2019-11-11 23:03:32.198266"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.205556"], ["updated_at", "2019-11-11 23:03:32.205556"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.213378"], ["updated_at", "2019-11-11 23:03:32.213378"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 40], ["receiver_id", 43], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 8], ["created_at", "2019-11-11 23:03:32.218352"], ["updated_at", "2019-11-11 23:03:32.218352"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.227820"], ["updated_at", "2019-11-11 23:03:32.227820"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.232235"], ["updated_at", "2019-11-11 23:03:32.232235"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.237067"], ["updated_at", "2019-11-11 23:03:32.237067"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.241909"], ["updated_at", "2019-11-11 23:03:32.241909"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.246418"], ["updated_at", "2019-11-11 23:03:32.246418"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.9ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 39], ["receiver_id", 32], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 12], ["created_at", "2019-11-11 23:03:32.258413"], ["updated_at", "2019-11-11 23:03:32.258413"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 39], ["receiver_id", 32], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 12], ["created_at", "2019-11-11 23:03:32.265572"], ["updated_at", "2019-11-11 23:03:32.265572"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 39], ["receiver_id", 32], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 12], ["created_at", "2019-11-11 23:03:32.270013"], ["updated_at", "2019-11-11 23:03:32.270013"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 39], ["receiver_id", 32], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 12], ["created_at", "2019-11-11 23:03:32.275278"], ["updated_at", "2019-11-11 23:03:32.275278"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 39], ["receiver_id", 32], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 12], ["created_at", "2019-11-11 23:03:32.279888"], ["updated_at", "2019-11-11 23:03:32.279888"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.4ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.288610"], ["updated_at", "2019-11-11 23:03:32.288610"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.293543"], ["updated_at", "2019-11-11 23:03:32.293543"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "That's sorta been thwarted unfortunately cos Courtney's purportedly falling short of shoring up fourth quadrant support"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.298221"], ["updated_at", "2019-11-11 23:03:32.298221"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.6ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.305189"], ["updated_at", "2019-11-11 23:03:32.305189"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 42], ["receiver_id", 38], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 13], ["created_at", "2019-11-11 23:03:32.322411"], ["updated_at", "2019-11-11 23:03:32.322411"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.6ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.331948"], ["updated_at", "2019-11-11 23:03:32.331948"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Did you steal a meal from Neal McBeal the Navy Seal?"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.336410"], ["updated_at", "2019-11-11 23:03:32.336410"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.340788"], ["updated_at", "2019-11-11 23:03:32.340788"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Courtly roles like the formerly portly consort are Courtney Portnoy's forté"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.345295"], ["updated_at", "2019-11-11 23:03:32.345295"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.350461"], ["updated_at", "2019-11-11 23:03:32.350461"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRelationship Load (0.5ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.361714"], ["updated_at", "2019-11-11 23:03:32.361714"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.7ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Portnoy finds joy in hoi polloi boy toy"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.367105"], ["updated_at", "2019-11-11 23:03:32.367105"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.373626"], ["updated_at", "2019-11-11 23:03:32.373626"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.5ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", " audiences are going to adore your tour de force performance as the forceful denim-clad court reporter in 'The Court Reporter Sported Jorts', the jet-setting jort-sporting court reporter story"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.378171"], ["updated_at", "2019-11-11 23:03:32.378171"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mMessage Create (0.4ms)[0m  [1m[32mINSERT INTO "messages" ("sender_id", "receiver_id", "content", "relationship_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["sender_id", 34], ["receiver_id", 32], ["content", "Courtney Portnoy portrayed the formerly portly consort in the seaport resort"], ["relationship_id", 5], ["created_at", "2019-11-11 23:03:32.382510"], ["updated_at", "2019-11-11 23:03:32.382510"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mRelationship Load (1.9ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" ORDER BY "relationships"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+Started POST "/login" for ::1 at 2019-11-11 17:06:23 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by AuthController#create as */*
+  Parameters: {"user"=>{"email"=>"fatima.wisoky@mcclure.io", "password"=>"[FILTERED]"}, "auth"=>{"user"=>{"email"=>"fatima.wisoky@mcclure.io", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "fatima.wisoky@mcclure.io"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:5:in `create'
+Completed 202 Accepted in 297ms (Views: 0.8ms | ActiveRecord: 19.3ms | Allocations: 11228)
+
+
+Started GET "/users" for ::1 at 2019-11-11 17:06:28 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 24ms (Views: 6.4ms | ActiveRecord: 1.6ms | Allocations: 5798)
+
+
+Started GET "/profile" for ::1 at 2019-11-11 17:06:41 -0600
+Processing by AuthController#show as */*
+  [1m[36mUser Load (7.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mRelationship Load (0.8ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."user_1_id" = $1[0m  [["user_1_id", 34]]
+  ↳ app/models/user.rb:10:in `relationships'
+  [1m[36mCACHE Relationship Load (0.0ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships" WHERE "relationships"."user_1_id" = $1[0m  [["user_1_id", 34]]
+  ↳ app/models/user.rb:10:in `relationships'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/models/user.rb:16:in `block in relationships_with_messages'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  ↳ app/models/user.rb:16:in `block in relationships_with_messages'
+  [1m[36mMessage Load (1.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."relationship_id" = $1[0m  [["relationship_id", 5]]
+  ↳ app/controllers/auth_controller.rb:18:in `show'
+  [1m[36mCACHE Message Load (0.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."relationship_id" = $1[0m  [["relationship_id", 5]]
+  ↳ app/controllers/auth_controller.rb:18:in `show'
+Completed 200 OK in 170ms (Views: 43.9ms | ActiveRecord: 38.0ms | Allocations: 24637)
+
+
+Started GET "/users" for ::1 at 2019-11-11 17:12:04 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (22.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (227.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 343ms (Views: 34.9ms | ActiveRecord: 308.5ms | Allocations: 12038)
+
+
+Started GET "/users" for ::1 at 2019-11-11 17:13:09 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (40.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 52ms (Views: 4.0ms | ActiveRecord: 42.7ms | Allocations: 5626)
+
+
+Started GET "/users" for ::1 at 2019-11-11 17:13:41 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 14ms (Views: 6.9ms | ActiveRecord: 1.4ms | Allocations: 5625)
+
+
+Started GET "/users" for ::1 at 2019-11-11 17:18:36 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (61.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 73ms (Views: 4.6ms | ActiveRecord: 62.6ms | Allocations: 5625)
+
+
+Started GET "/users" for ::1 at 2019-11-11 17:47:43 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (33.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 172ms (Views: 8.4ms | ActiveRecord: 106.0ms | Allocations: 12175)
+
+
+Started GET "/users" for ::1 at 2019-11-11 18:02:11 -0600
+Processing by UsersController#index as */*
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 34], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:38:in `current_user'
+  [1m[36mUser Load (11.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:17:in `map'
+Completed 200 OK in 29ms (Views: 3.5ms | ActiveRecord: 18.1ms | Allocations: 5744)
+
+
