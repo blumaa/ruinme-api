@@ -14,5 +14,7 @@ Rails.application.routes.draw do
   get '/relationships/:relationship_id/messages', to: "messages#index"
   post '/relationships/:relationship_id/messages', to: "messages#index"
 
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

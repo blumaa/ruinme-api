@@ -2,12 +2,12 @@ class User < ApplicationRecord
   has_many :relationships_a, class_name: 'Relationship', foreign_key: 'user_1_id'
   has_many :relationships_b, class_name: 'Relationship', foreign_key: 'user_1_id'
 
-  validates :email, uniqueness: { case_insensitive: false} 
+  validates :email, uniqueness: { case_insensitive: false}
 
   has_secure_password
 
   def relationships
-    self.relationships_a + self.relationships_b
+    (self.relationships_a + self.relationships_b).uniq
   end
 
   def relationships_with_messages
