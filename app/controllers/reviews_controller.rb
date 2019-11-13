@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     relationship = user.relationships & current_user.relationships
     if relationship.size > 0
       review = Review.new(comment: params[:comment], user: user)
-      if reviews.save
+      if review.save
         render json: {review: review}
       else
         render json: {message: "Unable to save", error: review.errors.full_messages}
