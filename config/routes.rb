@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :reviews
   resources :relationships, only: [:create]
   post '/relationships/decide', to: 'relationships#accept_or_decline'
 

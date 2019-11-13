@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :relationships_a, class_name: 'Relationship', foreign_key: 'user_1_id'
   has_many :relationships_b, class_name: 'Relationship', foreign_key: 'user_2_id'
+  has_many :reviews
 
   validates :email, uniqueness: { case_insensitive: false}
 
