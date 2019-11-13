@@ -11,10 +11,7 @@ Rails.application.routes.draw do
   post '/login', to: 'auth#create'
   get '/profile', to: 'auth#show'
 
-  get '/relationships/:relationship_id/messages', to: "messages#index"
-  post '/relationships/:relationship_id/messages', to: "messages#index"
-
-
+  post '/relationships/messages', to: 'messages#create'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -7,14 +7,15 @@ class MessagesController < ApplicationController
   end
 
   def create
+    sender = current_user
     relationship = Relationship.find_by(id: params[:relationship_id])
-    if relationship.user_1_id == params[:sender_id]
-      receiver_id = relationship.user_2_id
-    elsif relationship.user_2_id == params[:sender_id]
-      receiver_id = relationship.user_1_id
+    receiver = sender == relationship.user_1 ?  relationship.user_2 : relationship.user_1
+    new_message = relationship.messages.build(sender_id: sender.id, receiver_id: receiver.id, content: params[:content])
+    if new_message.save
+      render json: {data: new_message}
+    else
+      render json: {message: 'failed to send message'}
     end
-    new_message = relationship.messages.build(sender_id: params[:sender_id], receiver_id: receiver_id, content: params[:content])
-    render json: {message: "You've got mail", data: new_message}
   end
 
 

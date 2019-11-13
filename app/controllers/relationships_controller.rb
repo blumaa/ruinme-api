@@ -24,10 +24,10 @@ class RelationshipsController < ApplicationController
     if params[:decision] == "accept"
       rel.pending = false
       rel.save
-      render json: {decision: 'accepted', requester: rel.user_1, user: rel.user_2, relationship_id: rel.id, pending: rel.pending, messages: rel.messages, created_at: rel.created_at}
+      render json: {decision: 'accepted', requester: rel.user_1, receiver: current_user, relationship_id: rel.id, pending: rel.pending, messages: rel.messages, created_at: rel.created_at}
     elsif params[:decision] == "decline"
       rel.destroy
-      render json: {decision: 'declined', requester: rel.user_1, user: rel.user_2, relationship_id: rel.id, pending: rel.pending, messages: rel.messages, created_at: rel.created_at}
+      render json: {decision: 'declined', requester: rel.user_1, receiver: current_user, relationship_id: rel.id, pending: rel.pending, messages: rel.messages, created_at: rel.created_at}
     else
       render json: {message: 'decision undefined'}
     end
