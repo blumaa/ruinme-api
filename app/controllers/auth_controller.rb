@@ -15,7 +15,7 @@ class AuthController < ApplicationController
 
   def show
     user = current_user
-    render json: {user: user, relationships: user.relationships_with_messages}
+    render json: {user: user, relationships: user.relationships_with_messages, img_url: url_for(user.avatar)}
   end
 
   private
